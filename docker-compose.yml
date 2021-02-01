@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0.23
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 3306:3306
+
+  postgres:
+    image: postgres:13.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
