@@ -40,6 +40,9 @@ export class EventsController {
     return await this.repository.findOne(id);
   }
 
+  // You can also use the @UsePipes decorator to enable pipes.
+  // It can be done per method, or for every method when you
+  // add it at the controller level.
   @Post()
   async create(@Body() input: CreateEventDto) {
     return await this.repository.save({
@@ -48,8 +51,13 @@ export class EventsController {
     });
   }
 
+  // Create new ValidationPipe to specify validation group inside @Body
+  // new ValidationPipe({ groups: ['update'] })
   @Patch(':id')
-  async update(@Param('id') id, @Body() input: UpdateEventDto) {
+  async update(
+    @Param('id') id,
+    @Body() input: UpdateEventDto
+  ) {
     const event = await this.repository.findOne(id);
 
     return await this.repository.save({
