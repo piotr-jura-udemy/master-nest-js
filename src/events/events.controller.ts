@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, Logger, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, Logger, NotFoundException, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Like, MoreThan, Repository } from "typeorm";
 import { CreateEventDto } from './create-event.dto';
@@ -42,7 +42,13 @@ export class EventsController {
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     // console.log(typeof id);
-    return await this.repository.findOne(id);
+    const event = await this.repository.findOne(id);
+
+    if (!event) {
+      throw new NotFoundException();
+    }
+
+    return event;
   }
 
   // You can also use the @UsePipes decorator to enable pipes.
@@ -65,6 +71,10 @@ export class EventsController {
   ) {
     const event = await this.repository.findOne(id);
 
+    if (!event) {
+      throw new NotFoundException();
+    }
+
     return await this.repository.save({
       ...event,
       ...input,
@@ -76,6 +86,11 @@ export class EventsController {
   @HttpCode(204)
   async remove(@Param('id') id) {
     const event = await this.repository.findOne(id);
+
+    if (!event) {
+      throw new NotFoundException();
+    }
+
     await this.repository.remove(event);
   }
 }
