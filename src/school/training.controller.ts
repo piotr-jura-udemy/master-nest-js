@@ -34,7 +34,9 @@ export class TrainingController {
       { relations: ['teachers'] }
     );
 
-    subject.teachers = subject.teachers.filter(teacher => teacher.id !== 2);
+    subject.teachers = subject.teachers.filter(
+      teacher => teacher.id !== 2
+    );
 
     await this.subjectRepository.save(subject);
   }
