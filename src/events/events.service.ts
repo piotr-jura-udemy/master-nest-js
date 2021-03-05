@@ -153,4 +153,21 @@ export class EventsService {
     return this.getEventsBaseQuery()
       .where('e.organizerId = :userId', { userId });
   }
+
+  public async getEventsAttendedByUserIdPaginated(
+    userId: number, paginateOptions: PaginateOptions
+  ): Promise<PaginatedEvents> {
+    return await paginate<Event>(
+      this.getEventsAttendedByUserIdQuery(userId),
+      paginateOptions
+    );
+  }
+
+  private getEventsAttendedByUserIdQuery(
+    userId: number
+  ) {
+    return this.getEventsBaseQuery()
+      .leftJoinAndSelect('e.attendees', 'a')
+      .where('a.userId = :userId', { userId });
+  }
 }
