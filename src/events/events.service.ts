@@ -123,21 +123,25 @@ export class EventsService {
   public async createEvent(
     input: CreateEventDto, user: User
   ): Promise<Event> {
-    return await this.eventsRepository.save({
-      ...input,
-      organizer: user,
-      when: new Date(input.when)
-    });
+    return await this.eventsRepository.save(
+      new Event({
+        ...input,
+        organizer: user,
+        when: new Date(input.when)
+      })
+    );
   }
 
   public async updateEvent(
     event: Event, input: UpdateEventDto
   ): Promise<Event> {
-    return await this.eventsRepository.save({
-      ...event,
-      ...input,
-      when: input.when ? new Date(input.when) : event.when
-    });
+    return await this.eventsRepository.save(
+      new Event({
+        ...event,
+        ...input,
+        when: input.when ? new Date(input.when) : event.when
+      })
+    );
   }
 
   public async deleteEvent(
