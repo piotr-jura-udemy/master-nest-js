@@ -19,7 +19,7 @@ export class CurrentUserEventAttendanceController {
   @UseInterceptors(ClassSerializerInterceptor)
   async findAll(
     @CurrentUser() user: User,
-    @Query('page') page = 1
+    @Query('page', ParseIntPipe) page = 1
   ) {
     return await this.eventsService
       .getEventsAttendedByUserIdPaginated(
