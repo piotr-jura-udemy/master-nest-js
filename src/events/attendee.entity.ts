@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
-import { User } from "src/auth/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./../auth/user.entity";
 import { Event } from './event.entity';
 
 export enum AttendeeAnswerEnum {

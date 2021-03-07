@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/auth/user.entity';
-import { paginate, PaginateOptions } from 'src/pagination/paginator';
 import { DeleteResult, Repository, SelectQueryBuilder } from "typeorm";
+import { User } from './../auth/user.entity';
+import { paginate, PaginateOptions } from './../pagination/paginator';
 import { AttendeeAnswerEnum } from './attendee.entity';
 import { Event, PaginatedEvents } from "./event.entity";
 import { CreateEventDto } from './input/create-event.dto';
