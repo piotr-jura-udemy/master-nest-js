@@ -30,4 +30,15 @@ describe('EventsService', () => {
       getRepositoryToken(Event)
     );
   });
+
+  describe('updateEvent', () => {
+    it('should update the event', async () => {
+      const repoSpy = jest.spyOn(repository, 'save')
+        .mockResolvedValue({ id: 1 } as Event);
+      expect(service.updateEvent(new Event({ id: 1 }), {
+        name: 'New name'
+      })).resolves.toEqual({ id: 1 });
+      expect(repoSpy).toBeCalledWith({ id: 1, name: 'New name' });
+    });
+  });
 });
