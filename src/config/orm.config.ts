@@ -10,7 +10,7 @@ import { Teacher } from './../school/teacher.entity';
 export default registerAs(
   'orm.config',
   (): TypeOrmModuleOptions => ({
-    type: 'mysql',
+    type: 'postgres',
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     username: process.env.DB_USER,

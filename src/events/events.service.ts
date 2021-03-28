@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/auth/user.entity';
+import { paginate, PaginateOptions } from 'src/pagination/paginator';
 import { DeleteResult, Repository, SelectQueryBuilder } from "typeorm";
-import { User } from './../auth/user.entity';
-import { paginate, PaginateOptions } from './../pagination/paginator';
 import { AttendeeAnswerEnum } from './attendee.entity';
 import { Event, PaginatedEvents } from "./event.entity";
 import { CreateEventDto } from './input/create-event.dto';
@@ -72,23 +72,39 @@ export class EventsService {
 
     if (filter.when) {
       if (filter.when == WhenEventFilter.Today) {
+        // In MySQL
+        // query = query.andWhere(
+        //   `e.when >= CURDATE() AND e.when <= CURDATE() + INTERVAL 1 DAY`
+        // );
+        // In Postgres
         query = query.andWhere(
-          `e.when >= CURDATE() AND e.when <= CURDATE() + INTERVAL 1 DAY`
+          `e.when >= now() AND e.when <= now() + interval '1 day'`
         );
       }
 
       if (filter.when == WhenEventFilter.Tommorow) {
+        // In MySQL
+        // query = query.andWhere(
+        //   `e.when >= CURDATE() + INTERVAL 1 DAY AND e.when <= CURDATE() + INTERVAL 2 DAY`
+        // );
+        // In Postgres
         query = query.andWhere(
-          `e.when >= CURDATE() + INTERVAL 1 DAY AND e.when <= CURDATE() + INTERVAL 2 DAY`
+          `e.when >= now() + interval '1 day' AND e.when <= now() + interval '2 day'`
         );
       }
 
       if (filter.when == WhenEventFilter.ThisWeek) {
-        query = query.andWhere('YEARWEEK(e.when, 1) = YEARWEEK(CURDATE(), 1)');
+        // In MySQL
+        // query = query.andWhere('YEARWEEK(e.when, 1) = YEARWEEK(CURDATE(), 1)');
+        // In Postgres
+        query = query.andWhere(`date_part('week', e.when) = date_part('week', now())`);
       }
 
       if (filter.when == WhenEventFilter.NextWeek) {
-        query = query.andWhere('YEARWEEK(e.when, 1) = YEARWEEK(CURDATE(), 1) + 1');
+        // in MySQL
+        // query = query.andWhere(`YEARWEEK(e.when, 1) = YEARWEEK(CURDATE(), 1) + 1);
+        // In Postgres
+        query = query.andWhere(`date_part('week', e.when) = date_part('week', now()) + 1`);
       }
     }
 
