@@ -13,7 +13,9 @@ import { EventsModule } from './events/events.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [ormConfig],
+      load: [
+        process.env.NODE_ENV !== 'production' ? ormConfig : ormConfigProd
+      ],
       expandVariables: true
     }),
     TypeOrmModule.forRootAsync({
