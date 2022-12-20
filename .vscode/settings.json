@@ -7,6 +7,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
   "workbench.colorTheme": "Carbon Theme",
   "editor.fontFamily": "Cascadia Code",
   "editor.fontWeight": "400",
