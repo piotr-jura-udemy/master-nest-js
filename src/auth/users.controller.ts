@@ -1,17 +1,17 @@
-import { BadRequestException, Body, Controller, Post } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { AuthService } from "./auth.service";
-import { CreateUserDto } from "./input/create.user.dto";
-import { User } from "./user.entity";
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { AuthService } from './auth.service';
+import { CreateUserDto } from './input/create.user.dto';
+import { User } from './user.entity';
 
 @Controller('users')
 export class UsersController {
   constructor(
     private readonly authService: AuthService,
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>
-  ) { }
+    private readonly userRepository: Repository<User>,
+  ) {}
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
@@ -24,8 +24,8 @@ export class UsersController {
     const existingUser = await this.userRepository.findOne({
       where: [
         { username: createUserDto.username },
-        { email: createUserDto.email }
-      ]
+        { email: createUserDto.email },
+      ],
     });
 
     if (existingUser) {
@@ -40,7 +40,7 @@ export class UsersController {
 
     return {
       ...(await this.userRepository.save(user)),
-      token: this.authService.getTokenForUser(user)
-    }
+      token: this.authService.getTokenForUser(user),
+    };
   }
 }

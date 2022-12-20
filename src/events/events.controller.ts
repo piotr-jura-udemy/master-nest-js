@@ -1,33 +1,51 @@
-import { Body, ClassSerializerInterceptor, Controller, Delete, ForbiddenException, Get, HttpCode, Logger, NotFoundException, Param, ParseIntPipe, Patch, Post, Query, SerializeOptions, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from "@nestjs/common";
-import { AuthGuardJwt } from "./../auth/auth-guard.jwt";
-import { CurrentUser } from "./../auth/current-user.decorator";
-import { User } from "./../auth/user.entity";
-import { EventsService } from "./events.service";
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Delete,
+  ForbiddenException,
+  Get,
+  HttpCode,
+  Logger,
+  NotFoundException,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Query,
+  SerializeOptions,
+  UseGuards,
+  UseInterceptors,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
+import { AuthGuardJwt } from './../auth/auth-guard.jwt';
+import { CurrentUser } from './../auth/current-user.decorator';
+import { User } from './../auth/user.entity';
+import { EventsService } from './events.service';
 import { CreateEventDto } from './input/create-event.dto';
-import { ListEvents } from "./input/list.events";
-import { UpdateEventDto } from "./input/update-event.dto";
+import { ListEvents } from './input/list.events';
+import { UpdateEventDto } from './input/update-event.dto';
 
 @Controller('/events')
 @SerializeOptions({ strategy: 'excludeAll' })
 export class EventsController {
   private readonly logger = new Logger(EventsController.name);
 
-  constructor(
-    private readonly eventsService: EventsService
-  ) { }
+  constructor(private readonly eventsService: EventsService) {}
 
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
   @UseInterceptors(ClassSerializerInterceptor)
   async findAll(@Query() filter: ListEvents) {
-    const events = await this.eventsService
-      .getEventsWithAttendeeCountFilteredPaginated(
+    const events =
+      await this.eventsService.getEventsWithAttendeeCountFilteredPaginated(
         filter,
         {
           total: true,
           currentPage: filter.page,
-          limit: 2
-        }
+          limit: 2,
+        },
       );
     return events;
   }
@@ -100,10 +118,7 @@ export class EventsController {
   @Post()
   @UseGuards(AuthGuardJwt)
   @UseInterceptors(ClassSerializerInterceptor)
-  async create(
-    @Body() input: CreateEventDto,
-    @CurrentUser() user: User
-  ) {
+  async create(@Body() input: CreateEventDto, @CurrentUser() user: User) {
     return await this.eventsService.createEvent(input, user);
   }
 
@@ -115,7 +130,7 @@ export class EventsController {
   async update(
     @Param('id', ParseIntPipe) id,
     @Body() input: UpdateEventDto,
-    @CurrentUser() user: User
+    @CurrentUser() user: User,
   ) {
     const event = await this.eventsService.findOne(id);
 
@@ -125,7 +140,8 @@ export class EventsController {
 
     if (event.organizerId !== user.id) {
       throw new ForbiddenException(
-        null, `You are not authorized to change this event`
+        null,
+        `You are not authorized to change this event`,
       );
     }
 
@@ -135,10 +151,7 @@ export class EventsController {
   @Delete(':id')
   @UseGuards(AuthGuardJwt)
   @HttpCode(204)
-  async remove(
-    @Param('id', ParseIntPipe) id,
-    @CurrentUser() user: User
-  ) {
+  async remove(@Param('id', ParseIntPipe) id, @CurrentUser() user: User) {
     const event = await this.eventsService.findOne(id);
 
     if (!event) {
@@ -147,7 +160,8 @@ export class EventsController {
 
     if (event.organizerId !== user.id) {
       throw new ForbiddenException(
-        null, `You are not authorized to remove this event`
+        null,
+        `You are not authorized to remove this event`,
       );
     }
 

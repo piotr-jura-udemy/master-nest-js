@@ -1,4 +1,13 @@
 {
-  "editor.suggest.localityBonus": true,
-  "editor.snippetSuggestions": "bottom"
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.colorTheme": "Carbon Theme",
+  "editor.fontFamily": "Cascadia Code",
+  "editor.fontWeight": "400",
 }

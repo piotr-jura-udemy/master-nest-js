@@ -1,12 +1,18 @@
-import { Expose } from "class-transformer";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./../auth/user.entity";
+import { Expose } from 'class-transformer';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from './../auth/user.entity';
 import { Event } from './event.entity';
 
 export enum AttendeeAnswerEnum {
   Accepted = 1,
   Maybe,
-  Rejected
+  Rejected,
 }
 
 @Entity()
@@ -17,7 +23,7 @@ export class Attendee {
 
   @ManyToOne(() => Event, (event) => event.attendees, {
     nullable: true,
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
   })
   @JoinColumn()
   event: Event;
@@ -27,7 +33,7 @@ export class Attendee {
 
   @Column('enum', {
     enum: AttendeeAnswerEnum,
-    default: AttendeeAnswerEnum.Accepted
+    default: AttendeeAnswerEnum.Accepted,
   })
   @Expose()
   answer: AttendeeAnswerEnum;

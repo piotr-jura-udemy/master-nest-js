@@ -10,15 +10,13 @@ import { EventsController } from './events.controller';
 import { EventsService } from './events.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Event, Attendee]),
-  ],
+  imports: [TypeOrmModule.forFeature([Event, Attendee])],
   controllers: [
     EventsController,
     CurrentUserEventAttendanceController,
     EventAttendeesController,
-    EventsOrganizedByUserController
+    EventsOrganizedByUserController,
   ],
-  providers: [EventsService, AttendeesService]
+  providers: [EventsService, AttendeesService],
 })
-export class EventsModule { }
+export class EventsModule {}

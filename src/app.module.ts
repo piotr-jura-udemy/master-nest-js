@@ -17,27 +17,32 @@ import { SchoolModule } from './school/school.module';
       isGlobal: true,
       load: [ormConfig],
       expandVariables: true,
-      envFilePath: `${process.env.NODE_ENV}.env`
+      envFilePath: `${process.env.NODE_ENV ?? ''}.env`,
     }),
     TypeOrmModule.forRootAsync({
-      useFactory: process.env.NODE_ENV !== 'production'
-        ? ormConfig : ormConfigProd
+      useFactory:
+        process.env.NODE_ENV !== 'production' ? ormConfig : ormConfigProd,
     }),
     AuthModule,
     EventsModule,
-    SchoolModule
+    SchoolModule,
   ],
   controllers: [AppController],
-  providers: [{
-    provide: AppService,
-    useClass: AppJapanService
-  }, {
-    provide: 'APP_NAME',
-    useValue: 'Nest Events Backend!'
-  }, {
-    provide: 'MESSAGE',
-    inject: [AppDummy],
-    useFactory: (app) => `${app.dummy()} Factory!`
-  }, AppDummy],
+  providers: [
+    {
+      provide: AppService,
+      useClass: AppJapanService,
+    },
+    {
+      provide: 'APP_NAME',
+      useValue: 'Nest Events Backend!',
+    },
+    {
+      provide: 'MESSAGE',
+      inject: [AppDummy],
+      useFactory: (app) => `${app.dummy()} Factory!`,
+    },
+    AppDummy,
+  ],
 })
-export class AppModule { }
+export class AppModule {}
