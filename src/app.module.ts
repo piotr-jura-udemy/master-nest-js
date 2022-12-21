@@ -29,7 +29,7 @@ import { SchoolModule } from './school/school.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
-      debug: true,
+      debug: false,
       playground: true,
     }),
     AuthModule,
