@@ -6,17 +6,18 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Teacher } from './teacher.entity';
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType, InputType } from '@nestjs/graphql';
 
 @Entity()
 @ObjectType()
+@InputType('SubjectInput')
 export class Subject {
   @PrimaryGeneratedColumn()
-  @Field()
+  @Field({ nullable: true })
   id: number;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   name: string;
 
   @ManyToMany(() => Teacher, (teacher) => teacher.subjects, { cascade: true })
