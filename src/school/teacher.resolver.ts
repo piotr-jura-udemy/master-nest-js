@@ -1,9 +1,18 @@
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Int,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { Teacher } from './teacher.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { TeacherAddInput } from './input/teacher-add.input';
+import { Subject } from './subject.entity';
 
 @Resolver(() => Teacher)
 export class TeacherResolver {
@@ -25,7 +34,7 @@ export class TeacherResolver {
   ): Promise<Teacher> {
     return await this.teacherRepository.findOneOrFail({
       where: { id },
-      relations: { subjects: true },
+      // relations: { subjects: true },
     });
   }
 
@@ -35,5 +44,12 @@ export class TeacherResolver {
     input: TeacherAddInput,
   ) {
     return await this.teacherRepository.save(input);
+  }
+
+  @ResolveField('subjects')
+  public async subjects(@Parent() teacher: Teacher): Promise<Subject[]> {
+    this.logger.debug('@ResolveField: subjects');
+
+    return await teacher.subjects;
   }
 }

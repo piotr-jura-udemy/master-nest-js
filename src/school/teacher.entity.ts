@@ -15,5 +15,5 @@ export class Teacher {
 
   @ManyToMany(() => Subject, (subject) => subject.teachers)
   @Field(() => [Subject], { nullable: true })
-  subjects: Subject[];
+  subjects: Promise<Subject[]>;
 }
