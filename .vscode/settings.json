@@ -10,7 +10,7 @@
   "[typescript]": {
     "editor.formatOnSave": false
   },
-  "workbench.colorTheme": "Carbon Theme",
-  "editor.fontFamily": "Cascadia Code",
+  "workbench.colorTheme": "Palenight Operator",
+  "editor.fontFamily": "Dank Mono, Cascadia Code",
   "editor.fontWeight": "400",
 }
