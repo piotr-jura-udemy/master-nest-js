@@ -10,7 +10,6 @@ import { Field, ObjectType, InputType } from '@nestjs/graphql';
 
 @Entity()
 @ObjectType()
-@InputType('SubjectInput')
 export class Subject {
   @PrimaryGeneratedColumn()
   @Field({ nullable: true })
@@ -22,5 +21,6 @@ export class Subject {
 
   @ManyToMany(() => Teacher, (teacher) => teacher.subjects, { cascade: true })
   @JoinTable()
-  teachers: Teacher[];
+  @Field(() => [Teacher], { nullable: true })
+  teachers: Promise<Teacher[]>;
 }

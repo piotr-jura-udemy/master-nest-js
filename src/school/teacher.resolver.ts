@@ -32,10 +32,12 @@ export class TeacherResolver {
   public async teacher(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Teacher> {
-    return await this.teacherRepository.findOneOrFail({
+    const teacher = await this.teacherRepository.findOneOrFail({
       where: { id },
       // relations: { subjects: true },
     });
+
+    return teacher;
   }
 
   @Mutation(() => Teacher, { name: 'teacherAdd' })
