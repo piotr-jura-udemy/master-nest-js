@@ -22,11 +22,9 @@ export class SubjectResolver {
   public async subject(
     @Args('id', { type: () => Int }) id: number,
   ): Promise<Subject> {
-    const subject = await this.subjects.findOneOrFail({
+    return await this.subjects.findOneOrFail({
       where: { id },
     });
-
-    return subject;
   }
 
   @ResolveField('teachers')
