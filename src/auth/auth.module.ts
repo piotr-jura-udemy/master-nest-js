@@ -9,6 +9,8 @@ import { User } from './user.entity';
 import { UsersController } from './users.controller';
 import { AuthResolver } from './auth.resolver';
 import { UserResolver } from './user.resolver';
+import { UserDoesNotExsistConstraint } from './validation/user-exists.constraint';
+import { UsersService } from './users.service';
 
 @Module({
   imports: [
@@ -23,11 +25,17 @@ import { UserResolver } from './user.resolver';
     }),
   ],
   providers: [
+    // Passport
     LocalStrategy,
     JwtStrategy,
+    // Services
     AuthService,
+    UsersService,
+    // Resolvers
     AuthResolver,
     UserResolver,
+    // Validators
+    UserDoesNotExsistConstraint,
   ],
   controllers: [AuthController, UsersController],
 })
