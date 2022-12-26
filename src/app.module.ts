@@ -13,7 +13,6 @@ import ormConfig from './config/orm.config';
 import ormConfigProd from './config/orm.config.prod';
 import { EventsModule } from './events/events.module';
 import { SchoolModule } from './school/school.module';
-import { UserDoesNotExsistConstraint } from './auth/validation/user-exists.constraint';
 
 @Module({
   imports: [

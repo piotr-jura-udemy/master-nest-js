@@ -26,6 +26,7 @@ import { EventsService } from './events.service';
 import { CreateEventDto } from './input/create-event.dto';
 import { ListEvents } from './input/list.events';
 import { UpdateEventDto } from './input/update-event.dto';
+import { Event } from './event.entity';
 
 @Controller('/events')
 @SerializeOptions({ strategy: 'excludeAll' })
@@ -49,55 +50,6 @@ export class EventsController {
       );
     return events;
   }
-
-  // @Get('/practice')
-  // async practice() {
-  //   // return await this.repository.find({
-  //   //   select: ['id', 'when'],
-  //   //   where: [{
-  //   //     id: MoreThan(3),
-  //   //     when: MoreThan(new Date('2021-02-12T13:00:00'))
-  //   //   }, {
-  //   //     description: Like('%meet%')
-  //   //   }],
-  //   //   take: 2,
-  //   //   order: {
-  //   //     id: 'DESC'
-  //   //   }
-  //   // });
-  // }
-
-  // @Get('practice2')
-  // async practice2() {
-  //   // // return await this.repository.findOne(
-  //   // //   1,
-  //   // //   { relations: ['attendees'] }
-  //   // // );
-  //   // const event = await this.repository.findOne(
-  //   //   1,
-  //   //   { relations: ['attendees'] }
-  //   // );
-  //   // // const event = new Event();
-  //   // // event.id = 1;
-
-  //   // const attendee = new Attendee();
-  //   // attendee.name = 'Using cascade';
-  //   // // attendee.event = event;
-
-  //   // event.attendees.push(attendee);
-  //   // // event.attendees = [];
-
-  //   // // await this.attendeeRepository.save(attendee);
-  //   // await this.repository.save(event);
-
-  //   // return event;
-
-  //   // return await this.repository.createQueryBuilder('e')
-  //   //   .select(['e.id', 'e.name'])
-  //   //   .orderBy('e.id', 'ASC')
-  //   //   .take(3)
-  //   //   .getMany();
-  // }
 
   @Get(':id')
   @UseInterceptors(ClassSerializerInterceptor)
@@ -128,10 +80,10 @@ export class EventsController {
   @UseGuards(AuthGuardJwt)
   @UseInterceptors(ClassSerializerInterceptor)
   async update(
-    @Param('id', ParseIntPipe) id,
+    @Param('id', ParseIntPipe) id: number,
     @Body() input: UpdateEventDto,
     @CurrentUser() user: User,
-  ) {
+  ): Promise<Event> {
     const event = await this.eventsService.findOne(id);
 
     if (!event) {
@@ -151,7 +103,10 @@ export class EventsController {
   @Delete(':id')
   @UseGuards(AuthGuardJwt)
   @HttpCode(204)
-  async remove(@Param('id', ParseIntPipe) id, @CurrentUser() user: User) {
+  async remove(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUser() user: User,
+  ) {
     const event = await this.eventsService.findOne(id);
 
     if (!event) {
