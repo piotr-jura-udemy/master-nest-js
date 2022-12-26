@@ -5,10 +5,10 @@ import {
   ValidatorConstraintInterface,
   registerDecorator,
 } from 'class-validator';
-import { User } from 'src/auth/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
+import { User } from '../user.entity';
 
 @Injectable()
 @ValidatorConstraint({ async: true })

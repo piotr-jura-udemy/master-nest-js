@@ -42,19 +42,20 @@ export function PaginatedResult<T>(ItemType: Type<T>) {
 
 export async function paginate<T, K>(
   qb: SelectQueryBuilder<T>,
+  cls: Type<K>,
   options: PaginateOptions = {
     limit: 10,
     currentPage: 1,
   },
-): Promise<any> {
+): Promise<K> {
   const offset = (options.currentPage - 1) * options.limit;
   const data = await qb.limit(options.limit).offset(offset).getMany();
 
-  return {
+  return new cls({
     first: offset + 1,
     last: offset + data.length,
     limit: options.limit,
     total: options.total ? await qb.getCount() : null,
     data,
-  } as K;
+  });
 }

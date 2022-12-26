@@ -27,6 +27,7 @@ import { CreateEventDto } from './input/create-event.dto';
 import { ListEvents } from './input/list.events';
 import { UpdateEventDto } from './input/update-event.dto';
 import { Event } from './event.entity';
+import { PaginatedEvents } from './events.types';
 
 @Controller('/events')
 @SerializeOptions({ strategy: 'excludeAll' })
@@ -38,7 +39,7 @@ export class EventsController {
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
   @UseInterceptors(ClassSerializerInterceptor)
-  async findAll(@Query() filter: ListEvents) {
+  async findAll(@Query() filter: ListEvents): Promise<PaginatedEvents> {
     const events =
       await this.eventsService.getEventsWithAttendeeCountFilteredPaginated(
         filter,
@@ -48,6 +49,9 @@ export class EventsController {
           limit: 2,
         },
       );
+
+    this.logger.debug(events);
+
     return events;
   }
 

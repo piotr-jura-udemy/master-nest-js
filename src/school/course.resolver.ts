@@ -3,9 +3,9 @@ import { Course } from './course.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuardJwtGql } from 'src/auth/auth-guard-jwt-gql';
 import { PaginatedCourses } from './school.types';
-import { paginate } from 'src/pagination/paginator';
+import { paginate } from '../pagination/paginator';
+import { AuthGuardJwtGql } from '../auth/auth-guard-jwt-gql';
 
 @Resolver(() => Course)
 export class CourseResolver {
@@ -19,6 +19,7 @@ export class CourseResolver {
   public async courses(): Promise<PaginatedCourses> {
     return await paginate<Course, PaginatedCourses>(
       this.courseRepository.createQueryBuilder(),
+      PaginatedCourses,
       {
         currentPage: 1,
         limit: 10,

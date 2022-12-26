@@ -99,6 +99,7 @@ export class EventsService {
   ): Promise<PaginatedEvents> {
     return await paginate<Event, PaginatedEvents>(
       this.getEventsWithAttendeeCountFilteredQuery(filter),
+      PaginatedEvents,
       paginateOptions,
     );
   }
@@ -157,6 +158,7 @@ export class EventsService {
   ): Promise<PaginatedEvents> {
     return await paginate<Event, PaginatedEvents>(
       this.getEventsOrganizedByUserIdQuery(userId),
+      PaginatedEvents,
       paginateOptions,
     );
   }
@@ -175,6 +177,7 @@ export class EventsService {
   ): Promise<PaginatedEvents> {
     return await paginate<Event, PaginatedEvents>(
       this.getEventsAttendedByUserIdQuery(userId),
+      PaginatedEvents,
       paginateOptions,
     );
   }
