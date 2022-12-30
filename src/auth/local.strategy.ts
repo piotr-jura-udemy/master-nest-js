@@ -1,10 +1,10 @@
-import { Injectable, Logger, UnauthorizedException } from "@nestjs/common";
-import { PassportStrategy } from "@nestjs/passport";
-import { InjectRepository } from "@nestjs/typeorm";
-import * as bcrypt from "bcrypt";
-import { Strategy } from "passport-local";
-import { Repository } from "typeorm";
-import { User } from "./user.entity";
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { InjectRepository } from '@nestjs/typeorm';
+import * as bcrypt from 'bcrypt';
+import { Strategy } from 'passport-local';
+import { Repository } from 'typeorm';
+import { User } from './user.entity';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -12,16 +12,14 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>
+    private readonly userRepository: Repository<User>,
   ) {
     super();
   }
 
-  public async validate(
-    username: string, password: string
-  ): Promise<any> {
+  public async validate(username: string, password: string): Promise<any> {
     const user = await this.userRepository.findOne({
-      where: { username }
+      where: { username },
     });
 
     if (!user) {
