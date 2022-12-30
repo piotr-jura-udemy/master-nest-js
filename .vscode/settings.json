@@ -10,7 +10,7 @@
   "[typescript]": {
     "editor.formatOnSave": false
   },
-  "workbench.colorTheme": "Eva Dark",
+  "workbench.colorTheme": "GitHub Dark",
   "editor.fontFamily": "Cascadia Code",
   "editor.fontWeight": "400",
 }
