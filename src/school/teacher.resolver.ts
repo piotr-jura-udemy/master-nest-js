@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { Teacher } from './teacher.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -13,6 +13,19 @@ export class TeacherResolver {
   @Query(() => [Teacher])
   public async teachers(): Promise<Teacher[]> {
     return await this.teachersRepository.find({
+      relations: ['subjects'],
+    });
+  }
+
+  @Query(() => Teacher)
+  public async teacher(
+    @Args('id', { type: () => Int })
+    id: number,
+  ): Promise<Teacher> {
+    return await this.teachersRepository.findOneOrFail({
+      where: {
+        id,
+      },
       relations: ['subjects'],
     });
   }
