@@ -12,6 +12,8 @@ export class TeacherResolver {
 
   @Query(() => [Teacher])
   public async teachers(): Promise<Teacher[]> {
-    return await this.teachersRepository.find();
+    return await this.teachersRepository.find({
+      relations: ['subjects'],
+    });
   }
 }
