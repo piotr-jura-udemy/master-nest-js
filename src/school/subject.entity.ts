@@ -21,5 +21,5 @@ export class Subject {
 
   @ManyToMany(() => Teacher, (teacher) => teacher.subjects, { cascade: true })
   @JoinTable()
-  teachers: Teacher[];
+  teachers: Promise<Teacher[]>;
 }
