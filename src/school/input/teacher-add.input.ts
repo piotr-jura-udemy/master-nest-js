@@ -1,5 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { IsNotEmpty, MinLength } from 'class-validator';
+import { IsEnum, IsNotEmpty, MinLength } from 'class-validator';
+import { Gender } from '../school.types';
 
 @InputType()
 export class TeacherAddInput {
@@ -7,4 +8,9 @@ export class TeacherAddInput {
   @IsNotEmpty()
   @MinLength(5)
   name: string;
+
+  @Field(() => Gender)
+  @IsNotEmpty()
+  @IsEnum(Gender)
+  gender: Gender;
 }
