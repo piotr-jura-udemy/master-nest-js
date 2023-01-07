@@ -9,6 +9,7 @@ import { User } from './user.entity';
 import { UsersController } from './users.controller';
 import { AuthResolver } from './auth.resolver';
 import { UserResolver } from './user.resolver';
+import { UserService } from './user.service';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserResolver } from './user.resolver';
     AuthService,
     AuthResolver,
     UserResolver,
+    UserService,
   ],
   controllers: [AuthController, UsersController],
 })
