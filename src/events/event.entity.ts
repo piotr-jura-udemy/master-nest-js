@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './../auth/user.entity';
-import { PaginationResult } from './../pagination/paginator';
+import { Paginated } from './../pagination/paginator';
 import { Attendee } from './attendee.entity';
 
 @Entity()
@@ -59,4 +59,4 @@ export class Event {
   attendeeAccepted?: number;
 }
 
-export type PaginatedEvents = PaginationResult<Event>;
+export class PaginatedEvents extends Paginated<Event>(Event) {}
