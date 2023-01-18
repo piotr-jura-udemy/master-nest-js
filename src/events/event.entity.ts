@@ -1,8 +1,14 @@
-import { Expose } from "class-transformer";
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./../auth/user.entity";
-import { PaginationResult } from "./../pagination/paginator";
-import { Attendee } from "./attendee.entity";
+import { Expose } from 'class-transformer';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from './../auth/user.entity';
+import { PaginationResult } from './../pagination/paginator';
+import { Attendee } from './attendee.entity';
 
 @Entity()
 export class Event {
@@ -31,7 +37,7 @@ export class Event {
   address: string;
 
   @OneToMany(() => Attendee, (attendee) => attendee.event, {
-    cascade: true
+    cascade: true,
   })
   @Expose()
   attendees: Attendee[];

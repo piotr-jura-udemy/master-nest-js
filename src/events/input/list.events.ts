@@ -1,6 +1,6 @@
 export class ListEvents {
   when?: WhenEventFilter = WhenEventFilter.All;
-  page: number = 1;
+  page = 1;
 }
 
 export enum WhenEventFilter {
@@ -8,5 +8,5 @@ export enum WhenEventFilter {
   Today,
   Tommorow,
   ThisWeek,
-  NextWeek
+  NextWeek,
 }

@@ -1,8 +1,15 @@
-import { Expose } from "class-transformer";
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Attendee } from "./../events/attendee.entity";
+import { Expose } from 'class-transformer';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Attendee } from './../events/attendee.entity';
 import { Event } from './../events/event.entity';
-import { Profile } from "./profile.entity";
+import { Profile } from './profile.entity';
 
 @Entity()
 export class User {
