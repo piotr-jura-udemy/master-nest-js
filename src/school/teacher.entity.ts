@@ -9,7 +9,7 @@ import { Subject } from './subject.entity';
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Gender } from './school.types';
 import { Course } from './course.entity';
-import { Paginated } from 'src/pagination/paginator';
+import { Paginated } from '../pagination/paginator';
 
 @Entity()
 @ObjectType()

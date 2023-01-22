@@ -13,4 +13,8 @@
   "workbench.colorTheme": "Carbon Theme",
   "editor.fontFamily": "Cascadia Code",
   "editor.fontWeight": "400",
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.bracketPairsHorizontal": false,
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveBracketPair": true,
 }

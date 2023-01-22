@@ -5,7 +5,7 @@ import * as paginator from './../pagination/paginator';
 import { Event } from './event.entity';
 import { EventsService } from './events.service';
 
-jest.mock('./../pagination/paginator');
+// jest.mock('./../pagination/paginator');
 
 describe('EventsService', () => {
   let service: EventsService;
@@ -15,7 +15,8 @@ describe('EventsService', () => {
   let mockedPaginate;
 
   beforeEach(async () => {
-    mockedPaginate = paginator.paginate as jest.Mock;
+    // mockedPaginate = paginator.paginate as jest.Mock;
+    mockedPaginate = jest.spyOn(paginator, 'paginate');
     deleteQb = {
       where: jest.fn(),
       execute: jest.fn(),
@@ -128,7 +129,7 @@ describe('EventsService', () => {
       expect(whereSpy).toBeCalledWith('a.userId = :userId', { userId: 500 });
 
       expect(mockedPaginate).toBeCalledTimes(1);
-      expect(mockedPaginate).toBeCalledWith(selectQb, {
+      expect(mockedPaginate).toBeCalledWith(selectQb, expect.any(Function), {
         currentPage: 1,
         limit: 1,
       });
