@@ -1,73 +1,49 @@
+<a href="https://www.udemy.com/user/piotr-jura">
+  <p align="center"><img alt="Piotr Jura - Udemy Instructor" src="https://avatars.githubusercontent.com/u/39863283?v=4" align="center" width="200"></p>
+  <h1 align="center">Piotr Jura Udemy Courses</h1>
+  <h2 align="center">Fado Code Camp</h2>
+</a>
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  High-quality, comprehensive courses for web developers.
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <a href="#about-the-instructor"><strong>About the Instructor</strong></a> ·
+  <a href="#courses"><strong>Courses</strong></a> ·
+  <a href="#contact-and-links"><strong>Contact & Links</strong></a> ·
+  <a href="#course-resources"><strong>This Course Resources</strong></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<br/>
 
-## Description
+## About the Instructor
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+I am Piotr Jura, a seasoned web developer and a passionate Udemy instructor. With years of experience in JavaScript, TypeScript, Node, PHP, MySQL, Vue, React, and more, I bring practical, real-world knowledge to my students.
 
-## Installation
+## Courses
 
-```bash
-$ npm install
-```
+- [Master Nuxt 3 - Full-Stack Complete Guide](https://www.udemy.com/course/master-nuxt-full-stack-complete-guide/?referralCode=4EBA58BFBD39A31A9BE9)
+- [Symfony 6 Framework Hands-On 2023](https://www.udemy.com/course/symfony-framework-hands-on/?referralCode=6750F64C057515A5F787)
+- [Vue 3 Mastery: Firebase & More - Learn by Doing!](https://www.udemy.com/course/vuejs-course/?referralCode=26DAD96DAB47B4602DA3)
+- [Master NestJS - Node.js Framework 2023](https://www.udemy.com/course/master-nestjs-the-javascript-nodejs-framework/?referralCode=C8A3F83982053A5E44C0)
+- [Master Laravel with GraphQL, Vue.js, and Tailwind](https://www.udemy.com/course/master-laravel-with-graphql-vuejs-and-tailwind/?referralCode=CE3B5297B3614EFA884A)
+- [Master Laravel, Vue 3 & Inertia Full Stack 2023](https://www.udemy.com/course/master-laravel-6-with-vuejs-fullstack-development/?referralCode=4A6CED7AA1583CB709D6)
+- [Master Laravel 10 for Beginners & Intermediate 2023](https://www.udemy.com/course/laravel-beginner-fundamentals/?referralCode=E86A873AC47FB438D79C)
+- [Symfony API Platform with React Full Stack Masterclass](https://www.udemy.com/course/symfony-api-platform-reactjs-full-stack-masterclass/?referralCode=D2C29D1C641BB0CDBCD4)
 
-## Running the app
+## Contact and Links
 
-```bash
-# development
-$ npm run start
+- **Blog:** [Fado Code Camp](https://fadocodecamp.com/)
+- **LinkedIn:** [Follow Me on LinkedIn](https://www.linkedin.com/in/piotr-j-24250b257/)
+- **GitHub:** You are here! Give me a follow!
+- **Twitter:** [@piotr_jura](https://twitter.com/piotr_jura)
 
-# watch mode
-$ npm run start:dev
+## Course Resources
 
-# production mode
-$ npm run start:prod
-```
+Coming up!
 
-## Test
+---
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+<p align="center">
+  <strong>Explore, Learn, and Grow with My Comprehensive Web Development Courses!</strong>
+</p>
