@@ -1,3 +1,15 @@
+<!-- agentic-developer-banner:start -->
+> 📚 **Course resource** — source code for the *Master NestJS* Udemy course by Piotr Jura.
+>
+> ### 🚀 I'm now building [**The Agentic Developer**](https://agenticdeveloper.dev)
+>
+> Learn to ship production code with AI coding agents — Claude Code, Cursor & Codex. Free YouTube tutorials, articles, a newsletter, and a Skool community.
+>
+> 🖥️ **[AgentNotch](https://agentnotch.app)** — my macOS app that keeps all your coding agents in the notch: live status, alerts, context & token usage, and inline approvals.
+<!-- agentic-developer-banner:end -->
+
+---
+
 <a href="https://www.udemy.com/user/piotr-jura">
   <p align="center"><img alt="Piotr Jura - Udemy Instructor" src="https://avatars.githubusercontent.com/u/39863283?v=4" align="center" width="200"></p>
   <h1 align="center">Piotr Jura Udemy Courses</h1>
